@@ -7,3 +7,20 @@
 .timer{
     float:right;
 }
+
+.hide{
+    display: none;
+    
+}
+
+div#startScreen{
+    background: pink;
+}
+
+div#questions{
+    background: #ffd3b6;
+}
+
+/* .display{
+    display: contents;
+} */

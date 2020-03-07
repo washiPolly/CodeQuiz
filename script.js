@@ -1,15 +1,19 @@
 //declare all DOM, start button
-var startScreen = document.getElementById("startScreen");
-var codeQuiz = document.getElementById("codeQuiz");
-var startBtn = document.getElementById("startBtn");
-var questions = document.getElementById("questions");
-var answerChoices = document.getElementById("answerChoices");
+var startScreenEl = document.getElementById("startScreen");
+console.log(startScreenEl);
+var codeQuizEl = document.getElementById("codeQuiz");
+var startBtnEl = document.getElementById("startBtn");
+var questionsEl = document.getElementById("questions");
+var answerChoicesEl = document.getElementById("answerChoices");
 
 
 //declare functions to display questions/answer choices
-function startQuiz(){
-    startScreen.setAttribute("class", "hide");
-    questions.removeAttribute("class");
+function startQuiz(event){
+    event.preventDefault()
+    startScreenEl.setAttribute("class", "hide");
+    console.log(startScreenEl);
+    questionsEl.removeAttribute("class");
+    
     getQuestion();
 }
 
@@ -17,17 +21,53 @@ var currentIndex = 0;
 function getQuestion(){
     var currentQuestion = question[currentIndex];
     var title = document.getElementById("questionTitle");
-    title.textContent = currentQuestion.questionTitle; 
-
+    title.textContent = currentQuestion.questionTitle;
+    console.log(title);
+    
     //for each loop
+    
+    function randomAnswerGenerator(){
+        // var mulitpleChoice = [Math.floor(Math.random() * currentQuestion.answerChoices.length),3];
+
+        var mulitpleChoice = []; //generate random index to display multiple choice answers
+        do {
+            var answer = currentQuestion.answerChoices[Math.floor(Math.random() * currentQuestion.answerChoices.length)];
+            if (mulitpleChoice.indexOf(answer) === -1) {
+                mulitpleChoice.push(answer);
+            }
+        }while (mulitpleChoice.length < currentQuestion.answerChoices.length);
+      console.log(mulitpleChoice);
+
+      /* create a radio button */
+        function createRadio(answerArr){
+            for (var i = 0; i < answerArr.length; i++){
+                var newLabel = document.createElement("label");
+                var newRadio = document.createElement("input");
+                newRadio.setAttribute("type", "radio");
+                newRadio.setAttribute("value", answerArr[i]);
+                newLabel.append(newRadio);
+                newLabel.append(answerArr[i]);
+                answerChoicesEl.append(newLabel);
+                newRadio.setAttribute("name", "select");
+
+            }
+           
+
+    }   
+    createRadio(mulitpleChoice);
+      
+        }
     //create element button with class and value and textContent
     //on each click on radio buttons, create another function within for loop: determine right or wrong answer outside
-    for()
+    randomAnswerGenerator();
+    
+    
 }
 
 
 
-startBtn.onclick = startQuiz;
+$("#startBtn").on("click", startQuiz);
+// startBtn.addEventListener("click", startQuiz);
 
 //Timer Counter (wrong answer deduct time)
 //enter high score
