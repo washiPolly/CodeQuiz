@@ -19,43 +19,33 @@
 <body>
 
     <a href="#">View Highscore</a>
-    <p class="Timer">Time: </p>
-    <form id="mainForm" >
-        <div class="row">
-          <h1 class="col-form-label col-lg-9 pt-0">Questions go here</h1>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" >
-              <label class="form-check-label" for="gridRadios1">
-                First radio
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              <label class="form-check-label" for="gridRadios2">
-                Second radio
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-              <label class="form-check-label" for="gridRadios3">
-                Third radio
-              </label>
-            </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios4" value="option4">
-                <label class="form-check-label" for="gridRadios4">
-                  Fourth radio
-                </label>
-            </div>
-          </div>
+    <p class="timer">Time: </p>
+    <form id="mainForm">
+        <div id="startScreen" class="start">
+          <h1 class="codeQuiz">Code Quiz</h1>
+
+          <button id="startBtn">Start Quiz</button>
+
         </div>
+    
+        <div id="questions" class="hide">
+            <h2 id="questionTitle"></h2>
+                <div id="answerChoices" class="answerChoices">
+                </div>
+        </div>
+
+        <div id="feedback" class="feedback hide"></div>
+
+        <!-- <div>write final screen div</div> -->
+
+
+        
     </form>
 
-      <div id="bar" style="border-top:2px solid #ccc; col-md-10"></div>
-      <p id="solution">Correct / Incorrect</p>
+     
 
-
+    <script src="./questions.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
