@@ -45,7 +45,7 @@ var question = [
 },
 {
     questionTitle:"How can you convert a string into an integer in JavaScript?",
-    answer:["parseInt(\"3\")" , "Int(\"3\")", parseInt("\three\") , "Int("\three\"),
+    answer:["parseInt(\"3\")" , "Int(\"3\")", "parseInt(\"three\")", "Int(\"three\")"],
     correctAnswer: "parseInt(\"3\")"
 },
 {
