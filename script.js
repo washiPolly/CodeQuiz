@@ -5,8 +5,9 @@ var codeQuizEl = document.getElementById("codeQuiz");
 var startBtnEl = document.getElementById("startBtn");
 var questionsEl = document.getElementById("questions");
 var answerChoicesEl = document.getElementById("answerChoices");
+var feedbackEl = document.getElementById("feedback");
 
-
+$(document).ready(function(){
 //declare functions to display questions/answer choices
 function startQuiz(event){
     event.preventDefault()
@@ -49,9 +50,38 @@ function getQuestion(){
                 newLabel.append(answerArr[i]);
                 answerChoicesEl.append(newLabel);
                 newRadio.setAttribute("name", "select");
+                newRadio.setAttribute("class", "myRadio");
+
+                feedbackEl.removeAttribute("class");
+
+                $( "input" ).on( "click", function() {
+
+                    if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
+                        $( "#feedback" ).html( "Correct Answer!" );
+                    }
+                    else{
+                        $( "#feedback" ).html( "Incorrect Answer" );
+                    }
+                  });
+
+                // function checkAnswer() {
+                //     var x = document.querySelector(".myRadio:checked").value;
+                //     document.getElementById("feedback").innerHTML = x;
+                //     console.log(x);
+                    
+                //     // if(x === correctAnswer){
+                //     //     alert("Your are a - " + radioValue);
+                //     //}
+
+                //   }
+                //     checkAnswer();
+
+                  
+
 
             }
-           
+            
+               
 
     }   
     createRadio(mulitpleChoice);
@@ -61,6 +91,15 @@ function getQuestion(){
     //on each click on radio buttons, create another function within for loop: determine right or wrong answer outside
     randomAnswerGenerator();
     
+
+
+        // if( newRadio = document.querySelector("myRadio").checked === correctAnswer){
+        //     feedbackEl.innerHTML = "Correct!"
+        // }
+        // else{
+        //     feedbackEl.innerHTML = "Incorrect!"
+        // }
+        
     
 }
 
@@ -78,3 +117,4 @@ $("#startBtn").on("click", startQuiz);
 //evenlistener for if correct Answer is selected then display Solution message, add Counter
 //add timer
 //create Div to show "All Done" and add form to keep high score
+});

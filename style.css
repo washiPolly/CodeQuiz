@@ -21,6 +21,6 @@ div#questions{
     background: #ffd3b6;
 }
 
-/* .display{
-    display: contents;
-} */
+#feedback {
+    border-top: double;
+}
