@@ -23,5 +23,9 @@ div#questions{
 
 #feedback {
     border-top: double;
+    margin-bottom: 10px;
 }
 
+input.myRadio{
+    margin-right: 3px;
+}

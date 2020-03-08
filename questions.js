@@ -4,17 +4,17 @@
 //create array and place objects inside with quesiton, answerChoice,correctAnswer
 var question = [
 {
-    questionTitle: "What is NaN?",
+    questionTitle: "What does the term NaN stand for?",
     answerChoices:["Not A Number" , "Not Applicaple Now", "Non Alphabetical", "Not A Nominal"],
     correctAnswer: "Not A Number"
 },
 {
-    questionTitle: "What does a boolean return?",
+    questionTitle: "What are the two possible boolean variables?",
     answerChoices:["True or False" , "Yes or No", "This or That", "Now or Later"],
     correctAnswer: "True or False"
 },
 {
-    questionTitle:"What is the correct way to call function codeQuiz()?",
+    questionTitle:"What is the correct way to call back this sample function codeQuiz()?",
     answerChoices:["codeQuiz();" , "function codeQuiz();", "codeQuiz()", "function();"],
     correctAnswer:"codeQuiz();"
 },
@@ -24,24 +24,24 @@ var question = [
     correctAnswer: "Document Object Model"
 },
 {
-    questionTitle: "What data type below is not supported by javaScript?",
+    questionTitle: "What data type below is NOT supported by JavaScript?",
     answerChoices:["Chapter" , "String", "Symbol", "Number"],
     correctAnswer:"Chapter"
 },
 {
     questionTitle: "How can you create an object in JavaScript?",
-    answerChoices:["using object literal" , "typing in object", "you can't", "using brackets"],
-    correctAnswer: "using object literal"
+    answerChoices:["Using object literal" , "Typing in object", "You can't", "Using brackets"],
+    correctAnswer: "Using object literal"
 },
 {
     questionTitle:"Which way can JavaScript code NOT be involved in an HTML File?",
-    answerChoices:["On Top" , "Inline", "Internal", "External"],
-    correctAnswer: "On Top"
+    answerChoices:["Reversed" , "Inline", "Internal", "External"],
+    correctAnswer: "Reversed"
 },
 {
     questionTitle:"What is innerHTML?",
-    answerChoices:["it will process an HTML tag if fond in a string" , "it will not process an HTML tag if fond in a string", "it is all the code in the HTML file", "it returns NaN"],
-    correctAnswer: "it will process an HTML tag if fond in a string"
+    answerChoices:["It will process an HTML tag if fond in a string" , "It will not process an HTML tag if fond in a string", "It is all the code in the HTML file", "It returns NaN"],
+    correctAnswer: "It will process an HTML tag if fond in a string"
 },
 {
     questionTitle:"How can you convert a string into an integer in JavaScript?",
@@ -49,9 +49,9 @@ var question = [
     correctAnswer: "parseInt(\"3\")"
 },
 {
-    questionTitle:"What is the correct syntax to consold log something?",
-    answerChoices:["console.log(var)" , "consoleLog(var)", "log(var)", "cl(var)"],
-    correctAnswer: "console.log(var)"
+    questionTitle:"What is the correct syntax to console log something?",
+    answerChoices:["console.log(var);" , "consoleLog(var);", "log(var);", "cl(var);"],
+    correctAnswer: "console.log(var);"
 }
 
 ];

@@ -6,8 +6,7 @@ var startBtnEl = document.getElementById("startBtn");
 var questionsEl = document.getElementById("questions");
 var answerChoicesEl = document.getElementById("answerChoices");
 var feedbackEl = document.getElementById("feedback");
-
-
+var nextDivEl = document.getElementById("nextDiv");
 
 $(document).ready(function(){
 //declare functions to display questions/answer choices
@@ -19,18 +18,21 @@ function startQuiz(event){
     getQuestion();
 }
 
+
 var scoreCounter = 0;
 var currentIndex = 0;
+
 function getQuestion(){
+
     var currentQuestion = question[currentIndex];
     var title = document.getElementById("questionTitle");
     title.textContent = currentQuestion.questionTitle;
     console.log(title);
+    nextDivEl.setAttribute("class", "hide");
     
     //for each loop
     
     function randomAnswerGenerator(){
-        // var mulitpleChoice = [Math.floor(Math.random() * currentQuestion.answerChoices.length),3];
 
         var mulitpleChoice = []; //generate random index to display multiple choice answers
         do {
@@ -39,7 +41,7 @@ function getQuestion(){
                 mulitpleChoice.push(answer);
             }
         }while (mulitpleChoice.length < currentQuestion.answerChoices.length);
-      console.log(mulitpleChoice);
+    //   console.log(mulitpleChoice);
 
       /* create a radio button */
         function createRadio(answerArr){
@@ -59,19 +61,26 @@ function getQuestion(){
 
 
                 feedbackEl.removeAttribute("class");
+                
 
                 $( "input" ).on( "click", function() {
-
+                    $(".myRadio").attr("disabled", true);
+                    
+                    
                     if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
                         $( "#feedback" ).html( "Correct Answer!" );
                         scoreCounter ++;
+                        nextDivEl.removeAttribute("class");
                         console.log("scoreCounter: " + scoreCounter);
-                        return;
+                        
+                        // console.log("currentIndex: " + currentIndex);
+                        document.getElementById("scoreCounter").textContent = scoreCounter;
                     }
                     else{
                         $( "#feedback" ).html( "Incorrect Answer" );
-                        return;
+                        nextDivEl.removeAttribute("class");
                     }
+
                   });
 
 
@@ -92,22 +101,31 @@ function getQuestion(){
     //create element button with class and value and textContent
     //on each click on radio buttons, create another function within for loop: determine right or wrong answer outside
     randomAnswerGenerator();
-    
+
+}
 
 
-        // if( newRadio = document.querySelector("myRadio").checked === correctAnswer){
-        //     feedbackEl.innerHTML = "Correct!"
-        // }
-        // else{
-        //     feedbackEl.innerHTML = "Incorrect!"
-        // }
-        
-    
+function nextQuestion(event){
+    event.preventDefault()
+    answerChoicesEl.innerHTML = " ";
+    feedbackEl.innerHTML = " ";
+  for (var i = 1; i < 10; i++){
+    currentIndex += 1;
+    getQuestion();
+    createRadio(mulitpleChoice);
+    randomAnswerGenerator();
+  }
+  
+     
+           
 }
 
 
 
 $("#startBtn").on("click", startQuiz);
+$("#nextBtn").on("click", nextQuestion);
+
+
 // startBtn.addEventListener("click", startQuiz);
 
 //Timer Counter (wrong answer deduct time)
@@ -119,4 +137,8 @@ $("#startBtn").on("click", startQuiz);
 //evenlistener for if correct Answer is selected then display Solution message, add Counter
 //add timer
 //create Div to show "All Done" and add form to keep high score
+
+
+
+
 });
