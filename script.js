@@ -122,13 +122,14 @@ function nextQuestion(event){
 }
 
 function startTimer(){
-    var timeLeft = 100;
+    var timeLeft = 75;
     var timeInterval = setInterval(function() {
         timerDisplayEl.textContent = timeLeft + " seconds";
         timeLeft--;
     
         if (timeLeft === 0) {
-          timerDisplayEl.textContent = "";
+          timerDisplayEl.textContent = "😭😭😭";
+          $(".myRadio").attr("disabled", true);
           clearInterval(timeInterval);
           timesUp();
           
