@@ -7,6 +7,7 @@ var questionsEl = document.getElementById("questions");
 var answerChoicesEl = document.getElementById("answerChoices");
 var feedbackEl = document.getElementById("feedback");
 var nextDivEl = document.getElementById("nextDiv");
+var timerDisplayEl = document.getElementById("timerDisplay");
 
 $(document).ready(function(){
 //declare functions to display questions/answer choices
@@ -120,9 +121,29 @@ function nextQuestion(event){
            
 }
 
-
+function startTimer(){
+    var timeLeft = 100;
+    var timeInterval = setInterval(function() {
+        timerDisplayEl.textContent = timeLeft + " seconds";
+        timeLeft--;
+    
+        if (timeLeft === 0) {
+          timerDisplayEl.textContent = "";
+          clearInterval(timeInterval);
+          timesUp();
+          
+        }
+    
+      }, 1000);
+    }
+    
+function timesUp(){
+    alert("You ran out of time 😢");
+    startQuiz();
+}
 
 $("#startBtn").on("click", startQuiz);
+$("#startBtn").on("click", startTimer);
 $("#nextBtn").on("click", nextQuestion);
 
 
