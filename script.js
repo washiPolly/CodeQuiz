@@ -7,17 +7,19 @@ var questionsEl = document.getElementById("questions");
 var answerChoicesEl = document.getElementById("answerChoices");
 var feedbackEl = document.getElementById("feedback");
 
+
+
 $(document).ready(function(){
 //declare functions to display questions/answer choices
 function startQuiz(event){
     event.preventDefault()
     startScreenEl.setAttribute("class", "hide");
-    console.log(startScreenEl);
     questionsEl.removeAttribute("class");
     
     getQuestion();
 }
 
+var scoreCounter = 0;
 var currentIndex = 0;
 function getQuestion(){
     var currentQuestion = question[currentIndex];
@@ -42,6 +44,7 @@ function getQuestion(){
       /* create a radio button */
         function createRadio(answerArr){
             for (var i = 0; i < answerArr.length; i++){
+                var newDiv = document.createElement("div");
                 var newLabel = document.createElement("label");
                 var newRadio = document.createElement("input");
                 newRadio.setAttribute("type", "radio");
@@ -51,6 +54,9 @@ function getQuestion(){
                 answerChoicesEl.append(newLabel);
                 newRadio.setAttribute("name", "select");
                 newRadio.setAttribute("class", "myRadio");
+                var div = document.createElement("div");
+                document.getElementById("answerChoices").appendChild(div);
+
 
                 feedbackEl.removeAttribute("class");
 
@@ -58,23 +64,19 @@ function getQuestion(){
 
                     if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
                         $( "#feedback" ).html( "Correct Answer!" );
+                        scoreCounter ++;
+                        console.log("scoreCounter: " + scoreCounter);
+                        return;
                     }
                     else{
                         $( "#feedback" ).html( "Incorrect Answer" );
+                        return;
                     }
                   });
 
-                // function checkAnswer() {
-                //     var x = document.querySelector(".myRadio:checked").value;
-                //     document.getElementById("feedback").innerHTML = x;
-                //     console.log(x);
-                    
-                //     // if(x === correctAnswer){
-                //     //     alert("Your are a - " + radioValue);
-                //     //}
 
-                //   }
-                //     checkAnswer();
+
+
 
                   
 
