@@ -31,8 +31,9 @@ input.myRadio{
 }
 
 #timerDisplay{
-    margin-left: 3px;
+    margin-left: 5px;
     margin-top: 0px;
     margin-right: 30px;
     float: right;
 }
+

@@ -26,7 +26,7 @@
     <form id="mainForm">
         <div id="startScreen" class="display">
           <h1 class="codeQuiz">Code Quiz</h1>
-        <p>Click on the Start button to start your quiz.</p>
+        <p>You will have 75 seconds to complete the quiz. Click on the Start button to start. Good Luck!</p>
           <button id="startBtn">Start Quiz</button>
 
         </div>
@@ -48,7 +48,21 @@
         </div>
 
         <!-- <div>write final screen div</div> -->
-
+        <div id="FinalDiv" class="finalDiv hide">
+            <h3>All Done!</h3>
+            <p class="Score">Your Final Score: <span id="scoreCounter"></span></p>
+            <label for="lname">Enter Your Initials:</label><br>
+            <input type="text" id="userInitials" name="userInitials" value="">
+            <input type="submit" id="initialBtn" value="Submit">
+            
+        </div>
+        <div id="highscoreDiv" class="highscoreDiv hide">
+            <h3>Highscores</h3>
+            <p></p><br><br>
+            <input type="submit" id="goBackbtn" value="Go Back">
+            <input type="submit" id="clearScorebtn" value="Clear Highcores">
+            
+        </div>
 
         
     </form>
