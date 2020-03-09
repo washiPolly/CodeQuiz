@@ -2,7 +2,11 @@
     margin-left: 25%;
     width: 50%;
     text-align: left;
+    background-image: url(./assets/linedpaper.png);
+    padding: 50px 50px 100px 50px;
 }
+
+
 
 .timer{
     float:right;
@@ -13,17 +17,22 @@
     
 }
 
-div#startScreen{
+/* div#startScreen{
     background: pink;
 }
 
 div#questions{
     background: #ffd3b6;
-}
+} */
 
+h2{
+    color: #17a2b8;
+    padding-bottom: 15px;
+}
 #feedback {
     border-top: double;
     margin-bottom: 10px;
+    padding-top: 5px;
 }
 
 input.myRadio{

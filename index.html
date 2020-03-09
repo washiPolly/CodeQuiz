@@ -32,7 +32,7 @@
         <div id="startScreen" class="display">
           <h1 class="codeQuiz">Code Quiz</h1>
         <p>You will have 75 seconds to complete the quiz. Click on the Start button to begin. Good Luck!</p>
-          <button id="startBtn">Start Quiz</button>
+          <button id="startBtn" class = "btn btn-success">Start Quiz</button>
 
         </div>
     
@@ -49,23 +49,23 @@
             
         </div>
         <div id="nextDiv" class = "hide">
-            <button id="nextBtn">Next</button>
+            <button id="nextBtn" class = "btn btn-info">Next</button>
         </div>
 
         <!-- <div>write final screen div</div> -->
-        <div id="finalDiv" class="">
+        <div id="finalDiv" class="hide">
             <h3>All Done!</h3>
             <p class="Score">Your Final Score: <span id="scoreCounter"></span></p>
-            <label for="lname">Enter Your Name/Initials:</label><br>
+            <label for="name">Enter Your Name/Initials:</label><br>
             <input type="text" id="userInitials" name="userInitials" value="">
-            <input type="submit" id="initialBtn">
+            <input type="submit" id="initialBtn" class = "btn btn-success">
             
         </div>
         <div id="highscoreDiv" class="hide">
             <h3>Highscores</h3>
             <p id = "highscoresResults"></p><br><br>
-            <input type="submit" id="goBackbtn" value="Go Back">
-            <input type="submit" id="clearScorebtn" value="Clear Highcores">
+            <input type="submit" id="goBackbtn" value="Go Back" class = "btn btn-secondary">
+            <input type="submit" id="clearScorebtn" value="Clear Highcores" class = "btn btn-secondary">
             
         </div>
         

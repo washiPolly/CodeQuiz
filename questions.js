@@ -54,9 +54,9 @@ var question = [
     correctAnswer: "console.log(var);"
 },
 {
-    questionTitle:"All Done",
-    answerChoices:["test", "test"],
-    correctAnswer: "test"
+    questionTitle:"quest11",
+    answerChoices:["console.log(var);" , "consoleLog(var);", "log(var);", "cl(var);"],
+    correctAnswer: "console.log(var);"
  }
 
 ];

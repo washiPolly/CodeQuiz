@@ -32,14 +32,14 @@ var scoreCounter = 0;
 var currentIndex = 0;
 
 function getQuestion(){
-
+    if (currentIndex < 10){
     var currentQuestion = question[currentIndex];
     var title = document.getElementById("questionTitle");
     title.textContent = currentQuestion.questionTitle;
-    console.log(title);
+    // console.log(title);
     nextDivEl.setAttribute("class", "hide");
     
-    //for each loop
+  
     
     function randomAnswerGenerator(){
 
@@ -49,14 +49,18 @@ function getQuestion(){
             if (mulitpleChoice.indexOf(answer) === -1) {
                 mulitpleChoice.push(answer);
             }
-    }while (mulitpleChoice.length < currentQuestion.answerChoices.length){
-        if(currentIndex === 9){
-            questionsEl.removeAttribute("class");
-            answerChoicesEl.createElement("Class", "hide");
-            feedbackEl.removeAttribute("class");
-            finalDivEl.removeAttribute("class");
-            console.log(currentQuestion);
-        }
+     }while (mulitpleChoice.length < currentQuestion.answerChoices.length){
+        // if(currentQuestion > 9 ){
+       
+        //     questionsEl.setAttribute("class", "hide");
+        //     answerChoicesEl.createElement("class", "hide");
+        //     feedbackEl.removeAttribute("class");
+        //     finalDivEl.removeAttribute("class");
+        //     console.log(currentQuestion);
+        //     console.log(mulitpleChoice.length);
+        //     console.log(currentQuestion.answerChoices.length);
+            
+        //  }
     };
     console.log(currentIndex);
     //   console.log(mulitpleChoice);
@@ -86,19 +90,19 @@ function getQuestion(){
                 $(".myRadio").attr("disabled", true);
                 
                 
-                if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
-                    $( "#feedback" ).html( "Correct Answer!" );
-                    nextDivEl.removeAttribute("class");
+                if ($( "input:checked" ).val() === currentQuestion.correctAnswer) {
+                    $( "#feedback" ).html( "✔️ Correct Answer!" );
+                    nextDivEl.setAttribute("class", "display");
                     console.log("scoreCounter: " + scoreCounter);
                     scoreCounter ++;
                     // console.log("currentIndex: " + currentIndex);
                     document.getElementById("scoreCounter").textContent = scoreCounter;
                 }
                 else{
-                    $( "#feedback" ).html( "Incorrect Answer" );
+                    $( "#feedback" ).html( "❌ Incorrect Answer" );
                     timeLeft = timeLeft - 5;
                     timesUpDiv.setAttribute("class","none");
-                    nextDivEl.removeAttribute("class");
+                    nextDivEl.setAttribute("class","display");
                 }
 
                 
@@ -113,20 +117,31 @@ function getQuestion(){
     //on each click on radio buttons, create another function within for loop: determine right or wrong answer outside
     randomAnswerGenerator();
 
+
 }
 
-
+else {
+    questionsEl.setAttribute("class", "hide");
+    answerChoicesEl.setAttribute("class", "hide");
+    feedbackEl.setAttribute("class", "hide");
+    finalDivEl.removeAttribute("class");
+    nextDivEl.remove();
+    document.querySelector(".timer").remove();
+    timesUpDiv.remove();
+}
+}
 function nextQuestion(event){
     event.preventDefault()
     answerChoicesEl.innerHTML = " ";
     feedbackEl.innerHTML = " ";
     timesUpDiv.setAttribute("class","hide");
-  for (var i = 0; i < 10; i++){
+  for (var i = 0; i < 9; i++){
     currentIndex += 1;
     // console.log(currentIndex);
     getQuestion();
     // createRadio(mulitpleChoice);
-    randomAnswerGenerator();
+    // randomAnswerGenerator();
+    return;
   }
   
      
@@ -142,12 +157,15 @@ function startTimer(){
         if (timeLeft === 0) {
           timerDisplayEl.textContent = "😭😭😭";
           $(".myRadio").attr("disabled", true);
+          timesUpDiv.setAttribute("class","hide");
         //   clearInterval(timeInterval);
           timesUp();
         }
         else if (timeLeft <= 0){
             timerDisplayEl.textContent = "😭😭😭";
             $(".myRadio").attr("disabled", true);
+            timesUpDiv.setAttribute("class","hide");
+            clearInterval(timeInterval);
             timesUp();
             
         }
@@ -162,7 +180,9 @@ function timesUp(){
 
 
 function scoreBoard(event){
-    event.preventDefault();
+    event.preventDefault()
+    
+    timesUpDiv.remove();
       // Store
     var user = userInitialsInput.value.trim();
       //Set
@@ -179,14 +199,19 @@ function scoreBoard(event){
         viewHighscoreEl.setAttribute("class","hide");
         finalDivEl.setAttribute("class", "hide");
         highscoreDivEl.removeAttribute("class");
-        $("#highscoresResults").prepend("<br><hr>" + lastInput + "   Score: " + scoreCounter);
+        $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
     });
 
     // $("#highscoresResults").prepend("<br><hr>" + lastInput);
     console.log(user);
 };
 
-
+$("#viewHighscore").on("click",function(){
+        viewHighscoreEl.setAttribute("class","hide");
+        finalDivEl.setAttribute("class", "hide");
+        highscoreDivEl.removeAttribute("class");
+        $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
+    });
 
 
 $("#startBtn").on("click", startQuiz);
