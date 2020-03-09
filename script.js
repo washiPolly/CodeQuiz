@@ -172,9 +172,7 @@ function scoreBoard(event){
     
        // Retrieve
     var lastInput = JSON.parse(localStorage.getItem("user"));
-    function clear(){
-        $("#userInitials").setAttribute("value", "");
-    }
+   
     // highscoresResultsSpan.textContent = lastInput.prepend("<br><hr>" + lastInput);
 
     $("#viewHighscore").on("click",function(){
@@ -190,14 +188,14 @@ function scoreBoard(event){
 
 
 
+
 $("#startBtn").on("click", startQuiz);
 $("#startBtn").on("click", startTimer);
 $("#nextBtn").on("click", nextQuestion);
 $("#initialBtn").on("click", scoreBoard);
 
-$("#clearScoreBtn").on("click", function(event){
-    event.preventDefault();
-    highscoresResultsSpan.value = '';
+$("#clearScoreBtn").on("click", function(){
+    highscoresResults.value = "";
 });
 
 
