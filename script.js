@@ -125,6 +125,7 @@ else {
     answerChoicesEl.setAttribute("class", "hide");
     feedbackEl.setAttribute("class", "hide");
     finalDivEl.removeAttribute("class");
+    document.getElementById("scoreCounter2").textContent = scoreCounter;
     nextDivEl.remove();
     document.querySelector(".timer").remove();
     timesUpDiv.remove();
@@ -181,8 +182,7 @@ function timesUp(){
 
 function scoreBoard(event){
     event.preventDefault()
-    
-    timesUpDiv.remove();
+        timesUpDiv.remove();
       // Store
     var user = userInitialsInput.value.trim();
       //Set
