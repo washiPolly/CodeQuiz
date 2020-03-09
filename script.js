@@ -187,6 +187,7 @@ $(document).ready(function () {
 
         store();
         userInitialsInput.value = "";
+        console.log(userInitialsInput.value);
         viewHighscoreEl.setAttribute("class", "hide");
         finalDivEl.setAttribute("class", "hide");
         highscoreDivEl.removeAttribute("class");
@@ -196,13 +197,13 @@ $(document).ready(function () {
 
     function store() {
         window.localStorage.myitems = JSON.stringify(highscoresResultsSpan.innerHTML);
-        console.log(highscoresResultsSpan);
+        // console.log(storedValues);
         
     }
-console.log(highscoresResultsSpan);
+console.log(highscoresResultsSpan.innerText);
     function getValues() {
         var storedValues = window.localStorage.myitems;
-        highscoresResultsSpan.innerHTML = storedValues;
+        highscoresResultsSpan.innerHTML = JSON.stringify(storedValues);
 
        
     }
@@ -237,11 +238,9 @@ console.log(highscoresResultsSpan);
 });
 
 
-// startBtn.addEventListener("click", startQuiz);
 
 //Timer Counter (wrong answer deduct time)
 //enter high score
-
 //create variables for Questions, Answers, CorrectAnswer, Counter
 //create object with Question and Answer arrays
 //write loop that displays each Question/Answer in html
