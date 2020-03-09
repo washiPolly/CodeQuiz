@@ -175,7 +175,7 @@ function startTimer(){
     }
     
 function timesUp(){
-    // alert("You ran out of time! 😢 Please refresh the page to restart.");
+    alert("You ran out of time! 😢 Please refresh the page to restart.");
     startQuiz();
 }
 
