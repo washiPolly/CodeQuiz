@@ -186,12 +186,12 @@ function scoreBoard(event){
       // Store
     var user = userInitialsInput.value.trim();
       //Set
-    localStorage.setItem("user", JSON.stringify(user));
+    sessionStorage.setItem("user", JSON.stringify(user));
 
     
     
        // Retrieve
-    var lastInput = JSON.parse(localStorage.getItem("user"));
+    var lastInput = JSON.parse(sessionStorage.getItem("user"));
    
     // highscoresResultsSpan.textContent = lastInput.prepend("<br><hr>" + lastInput);
 
@@ -206,12 +206,16 @@ function scoreBoard(event){
     console.log(user);
 };
 
-// $("#viewHighscore").on("click",function(){
-//         viewHighscoreEl.setAttribute("class","hide");
-//         finalDivEl.setAttribute("class", "hide");
-//         highscoreDivEl.removeAttribute("class");
-//         $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
-//     });
+$("#viewHighscore").on("click", function(){
+    questionsEl.setAttribute("class", "hide");
+    answerChoicesEl.setAttribute("class", "hide");
+    feedbackEl.setAttribute("class", "hide");
+    highscoreDivEl.removeAttribute("class");
+    document.getElementById("scoreCounter2").textContent = scoreCounter;
+    nextDivEl.remove();
+    document.querySelector(".timer").remove();
+    timesUpDiv.remove();
+});
 
 
 $("#startBtn").on("click", startQuiz);
