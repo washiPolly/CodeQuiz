@@ -195,23 +195,23 @@ function scoreBoard(event){
    
     // highscoresResultsSpan.textContent = lastInput.prepend("<br><hr>" + lastInput);
 
-    $("#viewHighscore").on("click",function(){
+    // $("#viewHighscore").on("click",function(){
         viewHighscoreEl.setAttribute("class","hide");
         finalDivEl.setAttribute("class", "hide");
         highscoreDivEl.removeAttribute("class");
         $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
-    });
+    // });
 
     // $("#highscoresResults").prepend("<br><hr>" + lastInput);
     console.log(user);
 };
 
-$("#viewHighscore").on("click",function(){
-        viewHighscoreEl.setAttribute("class","hide");
-        finalDivEl.setAttribute("class", "hide");
-        highscoreDivEl.removeAttribute("class");
-        $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
-    });
+// $("#viewHighscore").on("click",function(){
+//         viewHighscoreEl.setAttribute("class","hide");
+//         finalDivEl.setAttribute("class", "hide");
+//         highscoreDivEl.removeAttribute("class");
+//         $("#highscoresResults").prepend("<br><hr>" + "❤️ " + lastInput + " --  Score: " + scoreCounter);
+//     });
 
 
 $("#startBtn").on("click", startQuiz);
