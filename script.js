@@ -8,11 +8,19 @@ var answerChoicesEl = document.getElementById("answerChoices");
 var feedbackEl = document.getElementById("feedback");
 var nextDivEl = document.getElementById("nextDiv");
 var timerDisplayEl = document.getElementById("timerDisplay");
+var finalDivEl = document.getElementById("finalDiv");
+var timesUpDiv = document.getElementById("timesUpDiv");
+var userInitialsInput = document.getElementById("userInitials");
+var highscoresResultsSpan = document.getElementById("highscoresResults");
+var highscoreDivEl = document.getElementById("highscoreDiv");
+var viewHighscoreEl = document.getElementById("viewHighscore")
+
+var timeLeft = 75;
 
 $(document).ready(function(){
 //declare functions to display questions/answer choices
 function startQuiz(event){
-    event.preventDefault()
+    event.preventDefault();
     startScreenEl.setAttribute("class", "hide");
     questionsEl.removeAttribute("class");
     
@@ -41,9 +49,18 @@ function getQuestion(){
             if (mulitpleChoice.indexOf(answer) === -1) {
                 mulitpleChoice.push(answer);
             }
-        }while (mulitpleChoice.length < currentQuestion.answerChoices.length);
+    }while (mulitpleChoice.length < currentQuestion.answerChoices.length){
+        if(currentIndex === 9){
+            questionsEl.removeAttribute("class");
+            answerChoicesEl.createElement("Class", "hide");
+            feedbackEl.removeAttribute("class");
+            finalDivEl.removeAttribute("class");
+            console.log(currentQuestion);
+        }
+    };
+    console.log(currentIndex);
     //   console.log(mulitpleChoice);
-
+    
       /* create a radio button */
         function createRadio(answerArr){
             for (var i = 0; i < answerArr.length; i++){
@@ -60,40 +77,33 @@ function getQuestion(){
                 var div = document.createElement("div");
                 document.getElementById("answerChoices").appendChild(div);
 
-
                 feedbackEl.removeAttribute("class");
-                
-
-                $( "input" ).on( "click", function() {
-                    $(".myRadio").attr("disabled", true);
-                    
-                    
-                    if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
-                        $( "#feedback" ).html( "Correct Answer!" );
-                        scoreCounter ++;
-                        nextDivEl.removeAttribute("class");
-                        console.log("scoreCounter: " + scoreCounter);
-                        
-                        // console.log("currentIndex: " + currentIndex);
-                        document.getElementById("scoreCounter").textContent = scoreCounter;
-                    }
-                    else{
-                        $( "#feedback" ).html( "Incorrect Answer" );
-                        nextDivEl.removeAttribute("class");
-                    }
-
-                  });
-
-
-
-
-
-                  
 
 
             }
             
-               
+            $( "input" ).on( "click", function() {
+                $(".myRadio").attr("disabled", true);
+                
+                
+                if ($( "input:checked" ).val() === currentQuestion.correctAnswer){
+                    $( "#feedback" ).html( "Correct Answer!" );
+                    nextDivEl.removeAttribute("class");
+                    console.log("scoreCounter: " + scoreCounter);
+                    scoreCounter ++;
+                    // console.log("currentIndex: " + currentIndex);
+                    document.getElementById("scoreCounter").textContent = scoreCounter;
+                }
+                else{
+                    $( "#feedback" ).html( "Incorrect Answer" );
+                    timeLeft = timeLeft - 5;
+                    timesUpDiv.setAttribute("class","none");
+                    nextDivEl.removeAttribute("class");
+                }
+
+                
+
+              }); 
 
     }   
     createRadio(mulitpleChoice);
@@ -110,10 +120,12 @@ function nextQuestion(event){
     event.preventDefault()
     answerChoicesEl.innerHTML = " ";
     feedbackEl.innerHTML = " ";
-  for (var i = 1; i < 10; i++){
+    timesUpDiv.setAttribute("class","hide");
+  for (var i = 0; i < 10; i++){
     currentIndex += 1;
+    // console.log(currentIndex);
     getQuestion();
-    createRadio(mulitpleChoice);
+    // createRadio(mulitpleChoice);
     randomAnswerGenerator();
   }
   
@@ -122,7 +134,7 @@ function nextQuestion(event){
 }
 
 function startTimer(){
-    var timeLeft = 75;
+    // var timeLeft = 15;
     var timeInterval = setInterval(function() {
         timerDisplayEl.textContent = timeLeft + " seconds";
         timeLeft--;
@@ -130,22 +142,63 @@ function startTimer(){
         if (timeLeft === 0) {
           timerDisplayEl.textContent = "😭😭😭";
           $(".myRadio").attr("disabled", true);
-          clearInterval(timeInterval);
+        //   clearInterval(timeInterval);
           timesUp();
-          
+        }
+        else if (timeLeft <= 0){
+            timerDisplayEl.textContent = "😭😭😭";
+            $(".myRadio").attr("disabled", true);
+            timesUp();
+            
         }
     
       }, 1000);
     }
     
 function timesUp(){
-    alert("You ran out of time 😢");
+    // alert("You ran out of time! 😢 Please refresh the page to restart.");
     startQuiz();
 }
+
+
+function scoreBoard(event){
+    event.preventDefault();
+      // Store
+    var user = userInitialsInput.value.trim();
+      //Set
+    localStorage.setItem("user", JSON.stringify(user));
+
+    
+    
+       // Retrieve
+    var lastInput = JSON.parse(localStorage.getItem("user"));
+    function clear(){
+        $("#userInitials").setAttribute("value", "");
+    }
+    // highscoresResultsSpan.textContent = lastInput.prepend("<br><hr>" + lastInput);
+
+    $("#viewHighscore").on("click",function(){
+        viewHighscoreEl.setAttribute("class","hide");
+        finalDivEl.setAttribute("class", "hide");
+        highscoreDivEl.removeAttribute("class");
+        $("#highscoresResults").prepend("<br><hr>" + lastInput + "   Score: " + scoreCounter);
+    });
+
+    // $("#highscoresResults").prepend("<br><hr>" + lastInput);
+    console.log(user);
+};
+
+
 
 $("#startBtn").on("click", startQuiz);
 $("#startBtn").on("click", startTimer);
 $("#nextBtn").on("click", nextQuestion);
+$("#initialBtn").on("click", scoreBoard);
+
+$("#clearScoreBtn").on("click", function(event){
+    event.preventDefault();
+    highscoresResultsSpan.value = '';
+});
 
 
 // startBtn.addEventListener("click", startQuiz);

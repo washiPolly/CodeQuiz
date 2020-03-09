@@ -33,7 +33,12 @@ input.myRadio{
 #timerDisplay{
     margin-left: 5px;
     margin-top: 0px;
-    margin-right: 30px;
+    margin-right: 10px;
     float: right;
 }
 
+#timesUpDiv{
+    color: red;
+    float: right;
+    margin-right: 10px;
+}

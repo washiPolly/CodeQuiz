@@ -40,8 +40,8 @@ var question = [
 },
 {
     questionTitle:"What is innerHTML?",
-    answerChoices:["It will process an HTML tag if fond in a string" , "It will not process an HTML tag if fond in a string", "It is all the code in the HTML file", "It returns NaN"],
-    correctAnswer: "It will process an HTML tag if fond in a string"
+    answerChoices:["It will process an HTML tag if found in a string" , "It will not process an HTML tag if found in a string", "It is all the code in the HTML file", "It returns NaN"],
+    correctAnswer: "It will process an HTML tag if found in a string"
 },
 {
     questionTitle:"How can you convert a string into an integer in JavaScript?",
@@ -52,6 +52,11 @@ var question = [
     questionTitle:"What is the correct syntax to console log something?",
     answerChoices:["console.log(var);" , "consoleLog(var);", "log(var);", "cl(var);"],
     correctAnswer: "console.log(var);"
-}
+},
+{
+    questionTitle:"All Done",
+    answerChoices:["test", "test"],
+    correctAnswer: "test"
+ }
 
 ];

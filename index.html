@@ -18,15 +18,20 @@
 
 <body>
 
-    <a href="#">View Highscore</a>
+    <a href="#" id = "viewHighscore" class = "">View Highscore</a>
+    <div id="timesUpDiv" class="hide">
+        <p>-5 seconds!</p>
+                   
+    </div>
     <p class="timer">Time: <span id="timerDisplay"></span></p>
+
     <p class="Score">Score: <span id="scoreCounter"></span></p>
     
     
     <form id="mainForm">
         <div id="startScreen" class="display">
           <h1 class="codeQuiz">Code Quiz</h1>
-        <p>You will have 75 seconds to complete the quiz. Click on the Start button to start. Good Luck!</p>
+        <p>You will have 75 seconds to complete the quiz. Click on the Start button to begin. Good Luck!</p>
           <button id="startBtn">Start Quiz</button>
 
         </div>
@@ -48,22 +53,22 @@
         </div>
 
         <!-- <div>write final screen div</div> -->
-        <div id="FinalDiv" class="finalDiv hide">
+        <div id="finalDiv" class="">
             <h3>All Done!</h3>
             <p class="Score">Your Final Score: <span id="scoreCounter"></span></p>
-            <label for="lname">Enter Your Initials:</label><br>
+            <label for="lname">Enter Your Name/Initials:</label><br>
             <input type="text" id="userInitials" name="userInitials" value="">
-            <input type="submit" id="initialBtn" value="Submit">
+            <input type="submit" id="initialBtn">
             
         </div>
-        <div id="highscoreDiv" class="highscoreDiv hide">
+        <div id="highscoreDiv" class="hide">
             <h3>Highscores</h3>
-            <p></p><br><br>
+            <p id = "highscoresResults"></p><br><br>
             <input type="submit" id="goBackbtn" value="Go Back">
             <input type="submit" id="clearScorebtn" value="Clear Highcores">
             
         </div>
-
+        
         
     </form>
 
